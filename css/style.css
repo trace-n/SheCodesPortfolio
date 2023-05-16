@@ -1,0 +1,366 @@
+/* h1 { 
+    color: blueviolet;
+} */
+
+/* Base HTML Styles */
+
+/* Can import fonts from Google fonts and reference them in CSS */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* CSS variable for colours can be referenced eg. var(--pink) */
+:root {
+	--pink: #f38fb1;
+	--yellow: #f4d040;
+	--green: #57d68d;
+	--blue: #5dade2;
+	--black: #111111;
+	--gray: #c3c3c3;
+}
+
+/* CSS Reset */
+
+html {
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+    /* font-family: 'Dancing Script', sans-serif; san serif is a fallback font */
+	color: var(--black);
+	scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2, h3, h4, h5, p, a {
+    font-family: 'Inter', sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Global Styles */
+
+label, input, textarea, select {
+    display: block;
+    width: 100%;
+}
+
+input, textarea, select {
+    padding: 8px;
+    /* border-color: var(--gray); */
+}
+
+
+/* Components */
+
+/* sets the class btn-primary for hero section as white with a box */
+.btn-primary, .btn-secondary {
+    /* background-color: white; */
+    padding: 12px 16px;
+    display: inline-block;
+    text-decoration: none; /* no need for blue hyperlink underline*/
+    color: var(--black); /* set the hyperlink text to black instead of blue*/
+    border-radius: 4px; /* roundness of corner of button box */
+
+}
+
+.btn-primary {
+    background-color: white;
+    /* put the transition in the base object class */
+    transition: all 3s ease;
+}
+
+.btn-primary:hover {
+    outline: 1px solid var(--black);
+    box-shadow: 10px 5px 5px rgba( 0, 0, 0, 0.2);
+    /* pops the button out bigger */
+    /* transform: scale(1.1); */ 
+    transform: translateY(-4px);
+    /* this changes it to transparent over hover */
+    background-color: rgba(255,255,255,0.7);
+
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid white;
+    transition: all 1s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* -- Header section -- */
+
+/* hides nav bar  */
+/* nav {
+    display: none;
+} */
+.desktop-nav {
+    display: none;
+}
+
+.mobile-nav a {
+    display: block;
+    color: var(--black);
+    text-decoration: none;
+    padding: 4px 16px;
+    text-align: right;
+}
+
+header button {
+    all: unset;
+}
+
+
+/* only show if width is greater than 768px */
+@media (min-width: 768px) {
+    
+    .desktop-nav {
+        display: block;
+    }
+
+    .mobile-nav {
+        display:none;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+    }
+    
+    header a {
+        text-decoration: none;
+        color: var(--black);
+
+    }
+    
+    nav {
+        display: inline-block;
+    }
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    header nav ul {
+        display: flex;
+        gap: 24px;
+    }
+
+
+
+}
+
+/* when '.' is used - resizes class name of "logo" for image tag to be more specific
+.logo {
+    height: 50px;
+} */
+
+/* resizes class "logo" and specific header > svg img within header tag - concept of cascading within CSS */
+/* add in logo here to reuse height for efficient code */
+.logo, .hamburger-icon {
+    height: 50px;
+}
+
+/* container box - center horizontally via  display flex - horizontally, align-items - center, justify-content  */
+.mobile-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* section {
+    padding: 16px;  
+} */
+
+/* Hero section */
+#hero {
+    background-color: var(--pink); 
+    padding: 16px;  
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+
+/* can be specific to help readability and specific target when element may not be unique 
+rem provides proportionate reference to base font specified
+*/
+#hero h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+/* can adjust the properties if the width exceeds min */
+@media (min-width: 768px) {
+    
+    #hero {
+        padding: 120px 56px;
+    }
+    #hero h1 {
+       font-size: 3.5rem;
+       max-width: 70%;
+    }
+}
+
+#hero .hero-accent, #courses h2{
+    color: white;
+}
+
+/* Workshops section */
+
+#courses article {
+    padding: 32px 16px;
+}
+/* media change when width exceeds min */
+/* define after the more general condition otherwise, it will be overwritten by general condition */
+
+@media (min-width: 768px) {
+    #courses {
+        display: flex;
+    }
+
+    #courses article {
+        padding: 56px;
+     }    
+
+    /* #courses article {
+        padding: 56px;
+    } */
+    
+}
+/* end media */
+
+
+/* 
+@media (min-width: 768px) {
+    #courses article {
+       padding: 56px;
+    }
+} */
+
+#courses article .icon {
+    height: 24px;
+}
+
+#courses article h2 {
+    margin-bottom: 16px;
+}
+
+#courses article p {
+    margin-bottom: 16px;
+}
+
+
+#courses .workshops {
+    background-color: var(--yellow);
+    transition: all 0.3s ease;
+}
+
+#courses .workshops:hover {
+    filter: contrast(150%);
+}
+
+/* Flash section */
+#courses .flash {
+    background-color: var(--green);
+}
+
+/* Plus section */
+#courses .plus {
+    background-color: var(--blue);
+}
+
+/* Contact Section */
+
+#contact {
+    padding: 48px 16px;
+}
+
+#contact input, #contact select { 
+    margin-bottom: 16px;
+}
+
+#contact h2 {
+    margin-bottom: 16px;
+}
+
+
+@media (min-width: 768px) {
+    #contact h2 {
+       text-align: center;
+       font-size: 2.5rem;
+    }
+    #contact form {
+        max-width: 60%;
+        margin: 0 auto; /* this has the same margin left and right so centres element */
+    }
+}
+
+
+#contact input[type="submit"] {
+    background-color: var(--pink);
+    border: 0;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+/* Footer section */
+footer {
+    padding: 16px;
+    text-align: center;
+}
+
+/* footer small{
+    text-align: center;
+    display: block;
+} */
+
+
+
+
+/* Utilities */
+
+
+/* Use js to toggle show/hide the nav menu for mobile */
+.display-none {
+    display: none;
+}
